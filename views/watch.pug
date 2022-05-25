@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+	head
+		title="Watch | Media Streaming"
+	body
+		video#player
+
+		script(src="peerjs@1.3.1.min.js")
+		script(src="socket-io/socket.io.js")
+		script(src="watcher.js")
+		script.
+			let peerServer = { host: window.location.hostname, port: 3000, path: '/peerjs' }
+			let video = document.querySelector("video#player")
+			video.muted = true
+
+			let watcher = new Watcher({ video, peerServer })
+			// setTimeout(() => watcher.stop(), 40000)
